@@ -7,7 +7,7 @@ class App extends Component {
 
   state={
     feedbackList: [],
-    newFeedback = {
+    newFeedback: {
       feeling: '',
       understanding: '',
       support: '',
@@ -70,11 +70,16 @@ class App extends Component {
   }
 
   clearFeedbackFields = () => {
-    this.setState(this.state.newFeedback);
+    // this.setState(this.state.newFeedback);
   }
 
 
   render() {
+
+    let newFeedback = this.state.newFeedback;
+    console.log('newFeedback:', newFeedback);
+    
+
     return (
       <div className="App">
         <header className="App-header">
@@ -87,13 +92,13 @@ class App extends Component {
         <h1>Feedback Form</h1>
         <form onSubmit={this.handleSubmit}>
           <label>How are you feeling today?</label>
-          <input onChange={this.handleChange} value={this.state.feeling} name="feeling" />
+          <input onChange={this.handleChange} value={newFeedback.feeling} name="feeling" />
           <label>How well are you understanding the content?</label>
-          <input onChange={this.handleChange} value={this.state.understanding} name="understanding" />
+          <input onChange={this.handleChange} value={newFeedback.understanding} name="understanding" />
           <label>How well are you being supported?</label>
-          <input onChange={this.handleChange} value={this.state.support} name="support" />
+          <input onChange={this.handleChange} value={newFeedback.support} name="support" />
           <label>Any comments you want to leave today?</label>
-          <input onChange={this.handleChange} value={this.state.comments} name="comments" />
+          <input onChange={this.handleChange} value={newFeedback.comments} name="comments" />
           <button type="submit">Submit</button>
         </form>
 
