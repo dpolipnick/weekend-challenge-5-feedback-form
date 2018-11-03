@@ -8,15 +8,26 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
 // Create reducer
-const feedbackReducer = (state = [], action) => {
+const feedbackReducer = (state = {feeling: '', understanding: '', support: '', comments: '',}, action) => {
     console.log('In reducer!');
-    if ( action.type  === 'ADD_FEEDBACK' ) {
-      // action payload should be the data/rows from the Database
-      return action.payload;
+    // action payload should be the data/rows from the Database
+    if ( action.type  === 'ADD_FEELING' ) {
+      state.feeling = action.payload;
+    }
+    if ( action.type  === 'ADD_UNDERSTANDING' ) {
+        state.understanding = action.payload;
+      }
+    if ( action.type  === 'ADD_SUPPORT' ) {
+        state.support = action.payload;
+    }
+    if ( action.type  === 'ADD_COMMENTS' ) {
+        state.comments = action.payload;
     }
     // For any other action type, return the current state
     return state;
   }
+
+
   
   // Create Store
   const reduxStore = createStore(

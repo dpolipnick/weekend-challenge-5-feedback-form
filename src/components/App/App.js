@@ -48,7 +48,7 @@ class App extends Component {
   }
 
   clearFeedbackFields = () => {
-    // this.setState(this.state);
+    this.setState(this.state);
   }
 
 
