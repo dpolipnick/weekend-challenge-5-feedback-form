@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../App/App.css';
 import { connect } from 'react-redux';
 
 class Feeling extends Component {
@@ -57,4 +57,4 @@ class Feeling extends Component {
 }
 
 
-export default connect(Feeling);
+export default connect()(Feeling);
