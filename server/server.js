@@ -32,10 +32,11 @@ app.get('/feedback', (req, res) => {
   app.post('/feedback', (req, res) => {
     const newFeedback = req.body;
     console.log('About to POST newFeedback/req.body:', newFeedback);
-    const sqlText = `INSERT INTO feedback (id, feeling, understanding, support, comments, flagged, date)
-    VALUES ($1, $2, $3, $4, $5, $6, $7)`;
+    // const sqlText = `INSERT INTO feedback (id, feeling, understanding, support, comments, flagged, date)
+    const sqlText = `INSERT INTO feedback (feeling, understanding, support, comments)
+    VALUES ($1, $2, $3, $4)`;
     // SQL sanitize our inputs
-    pool.query(sqlText, [newFeedback.id, newFeedback.feeling, newFeedback.understanding, newFeedback.support, newFeedback.comments, newFeedback.flagged, newFeedback.date])
+    pool.query(sqlText, [newFeedback.feeling, newFeedback.understanding, newFeedback.support, newFeedback.comments])
         // If POST is successful, log and send good status
         .then((response) => {
             console.log(`Added song to the database`, newFeedback);

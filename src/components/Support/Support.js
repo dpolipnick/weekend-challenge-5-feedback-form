@@ -18,7 +18,8 @@ class Support extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.dispatch( { type: 'ADD_SUPPORT', payload: this.state } )
+    this.props.dispatch( { type: 'ADD_SUPPORT', payload: this.state.support } );
+    this.props.history.push('/4');
     // this.clearFeedbackFields();
   }
 
@@ -46,7 +47,7 @@ class Support extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>How well are you being supported?</label>
           <input onChange={this.handleChange} value={newFeedback.support} name="support" />
-          <button type="submit">Submit</button>
+          <button type="submit">NEXT</button>
         </form>
 
         

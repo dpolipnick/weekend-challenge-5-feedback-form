@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App/App.css';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class Comments extends Component {
 
@@ -18,9 +19,23 @@ class Comments extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.dispatch( { type: 'ADD_COMMENTS', payload: this.state } )
-    // this.clearFeedbackFields();
+    this.props.dispatch( { type: 'ADD_COMMENTS', payload: this.state.comments } );
+    console.log('In comments submit- this.props.reduxState.feedbackReducer is:', this.props.reduxState.feedbackReducer);
+    
+    axios({
+      method: 'POST',
+      url: '/feedback',
+      data: `this.props.reduxState.feedbackReducer`,
+    })
+    .then( (response) => {
+      console.log('POST response was', response);
+      this.props.history.push('/5');
+    })
+    .catch( (error) => {
+      alert('Error with POST request:', error);
+    })
   }
+
 
 //   clearFeedbackFields = () => {
 //     this.setState(this.state);
@@ -47,14 +62,13 @@ class Comments extends Component {
           
           <label>Any comments you want to leave today?</label>
           <input onChange={this.handleChange} value={newFeedback.comments} name="comments" />
-          <button type="submit">Submit</button>
+          <button type="submit">NEXT</button>
         </form>
-
-        
       </div>
     );
   }
 }
 
+const mapStateToProps = reduxState => ({ reduxState });
 
-export default connect()(Comments);
+export default connect(mapStateToProps)(Comments);

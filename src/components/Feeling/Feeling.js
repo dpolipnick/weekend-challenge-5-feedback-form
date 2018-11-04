@@ -18,7 +18,8 @@ class Feeling extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.dispatch( { type: 'ADD_FEELING', payload: this.state } )
+    this.props.dispatch( { type: 'ADD_FEELING', payload: this.state.feeling } );
+    this.props.history.push('/2');
     // this.clearFeedbackFields();
   }
 
@@ -47,7 +48,7 @@ class Feeling extends Component {
           <label>How are you feeling today?</label>
           <input onChange={this.handleChange} value={newFeedback.feeling} name="feeling" />
           
-          <button type="submit">Submit</button>
+          <button type="submit">NEXT</button>
         </form>
 
         

@@ -18,7 +18,8 @@ class Understanding extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.dispatch( { type: 'ADD_UNDERSTANDING', payload: this.state } )
+    this.props.dispatch( { type: 'ADD_UNDERSTANDING', payload: this.state.understanding } );
+    this.props.history.push('/3');
     // this.clearFeedbackFields();
   }
 
@@ -46,7 +47,7 @@ class Understanding extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>How well are you understanding the content?</label>
           <input onChange={this.handleChange} value={newFeedback.understanding} name="understanding" />
-          <button type="submit">Submit</button>
+          <button type="submit">NEXT</button>
         </form>
 
         
