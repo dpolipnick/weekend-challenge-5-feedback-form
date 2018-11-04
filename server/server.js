@@ -51,6 +51,26 @@ app.get('/feedback', (req, res) => {
   }); //end POST response
 
 
+
+  // DELETE request
+  app.delete('/feedback/:id', (req, res) => {
+    let reqId = req.params.id;
+    console.log('Delete request for id', reqId);
+    let sqlText = 'DELETE FROM feedback WHERE id=$1;';
+    pool.query(sqlText, [reqId])
+        // if delete is successful, log and send status
+        .then((result) => {
+            console.log('Delete successful.');
+            res.sendStatus(200);
+        })
+        // if delete is unsuccessful, log and send client error
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500); 
+        })
+})
+
+
 /** ---------- START SERVER ---------- **/
 app.listen(PORT, () => {
     console.log('Listening on port: ', PORT);

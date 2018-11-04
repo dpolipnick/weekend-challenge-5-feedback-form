@@ -46,7 +46,7 @@ class Feeling extends Component {
         <h2>Feeling</h2>
         <form onSubmit={this.handleSubmit}>
           <label>How are you feeling today?</label>
-          <input onChange={this.handleChange} value={newFeedback.feeling} name="feeling" />
+          <input onChange={this.handleChange} value={newFeedback.feeling} name="feeling" type="number"/>
           
           <button type="submit">NEXT</button>
         </form>

@@ -46,7 +46,7 @@ class Support extends Component {
         <h2>Support</h2>
         <form onSubmit={this.handleSubmit}>
           <label>How well are you being supported?</label>
-          <input onChange={this.handleChange} value={newFeedback.support} name="support" />
+          <input onChange={this.handleChange} value={newFeedback.support} name="support" type="number"/>
           <button type="submit">NEXT</button>
         </form>
 

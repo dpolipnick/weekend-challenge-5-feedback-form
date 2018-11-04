@@ -46,7 +46,7 @@ class Understanding extends Component {
         <h2>Understanding</h2>
         <form onSubmit={this.handleSubmit}>
           <label>How well are you understanding the content?</label>
-          <input onChange={this.handleChange} value={newFeedback.understanding} name="understanding" />
+          <input onChange={this.handleChange} value={newFeedback.understanding} name="understanding" type="number" />
           <button type="submit">NEXT</button>
         </form>
 

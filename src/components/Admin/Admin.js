@@ -30,14 +30,37 @@ class Admin extends Component {
         })
     }
 
+
+    deleteFeedback = (id) => {
+      // call axios
+      axios({
+        method: 'DELETE',
+        url: `/feedback/${id}`
+      })
+      .then( (response) => {
+        console.log('Delete response:', response);
+        this.getFeedback();
+      })
+      .catch( (error) => {
+        alert('Error with deleting feedback:', error);
+      })
+    }
+  
+
+
   render() {
     return (
-      <div>
+      <div className="App">
+      <header className="App-header">
+          <h1 className="App-title">Feedback!</h1>
+          <h4><i>Don't forget it!</i></h4>
+      </header>
+      <br/>
           <h1>Admin Page</h1>
           <table>
             <thead>
               <tr> 
-                <th>Feeling</th><th>Understanding</th><th>Support</th><th>Comments</th><th>Flagged</th><th>Date</th>
+                <th>Feeling</th><th>Understanding</th><th>Support</th><th>Comments</th><th>Flagged</th><th>Date</th><th>Delete?</th>
               </tr>
             </thead>
             <tbody>
@@ -47,6 +70,7 @@ class Admin extends Component {
                   <td>{feedback.feeling}</td><td>{feedback.understanding}</td>
                   <td>{feedback.support}</td><td>{feedback.comments}</td>
                   <td>{feedback.flagged}</td><td>{feedback.date}</td>
+                  <td><button onClick={() => {this.deleteFeedback(feedback.id)}}>Delete?</button></td>
                 </tr>
               )
             }
