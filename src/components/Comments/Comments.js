@@ -25,7 +25,7 @@ class Comments extends Component {
     axios({
       method: 'POST',
       url: '/feedback',
-      data: `this.props.reduxState.feedbackReducer`,
+      data: this.props.reduxState.feedbackReducer,
     })
     .then( (response) => {
       console.log('POST response was', response);
