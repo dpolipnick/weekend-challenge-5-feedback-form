@@ -9,13 +9,15 @@ class Support extends Component {
   }
 
 
-
+  // handles the input change to set local state
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
   }
 
+
+  // when NEXT button is clicked, send the local state to Redux
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.dispatch( { type: 'ADD_SUPPORT', payload: this.state.support } );

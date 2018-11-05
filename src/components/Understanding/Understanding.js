@@ -9,13 +9,15 @@ class Understanding extends Component {
   }
 
 
-
+  // as the input field changes, set state to the value
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
   }
 
+
+  // when NEXT button is clicked, send local state to redux
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.dispatch( { type: 'ADD_UNDERSTANDING', payload: this.state.understanding } );

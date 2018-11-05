@@ -10,7 +10,8 @@ import logger from 'redux-logger';
 // Create reducer
 const feedbackReducer = (state = {feeling: '', understanding: '', support: '', comments: '',}, action) => {
     console.log('In reducer!');
-    // action payload should be the data/rows from the Database
+    // action payload should be the data we need to add to reduxState
+    // matches action to add correctly to state
     if ( action.type  === 'ADD_FEELING' ) {
       state.feeling = action.payload;
     }

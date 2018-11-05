@@ -5,7 +5,7 @@ import axios from 'axios';
 
 class Admin extends Component {
 
-
+    // create an array in local state to use with the GET request
     state = {
         feedbackList: [],
     }
@@ -16,6 +16,9 @@ class Admin extends Component {
         this.getFeedback();
     }
 
+
+    // GET request with axios to get all the current feedback
+    // from the server and display on the DOM for the admin
     getFeedback = () => {
         axios.get('/feedback')
         .then( (response) => {
@@ -30,7 +33,8 @@ class Admin extends Component {
         })
     }
 
-
+    
+    // deletes feedback after an admin has reviewed. Deletes from DB.
     deleteFeedback = (id) => {
       // call axios
       axios({
@@ -57,6 +61,8 @@ class Admin extends Component {
       </header>
       <br/>
           <h1>Admin Page</h1>
+
+          {/* table to display the feedback for admins */}
           <table>
             <thead>
               <tr> 
@@ -80,6 +86,7 @@ class Admin extends Component {
     );
   }
 }
+
 
 const mapStateToProps = reduxState => ({ reduxState });
 

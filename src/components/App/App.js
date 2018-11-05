@@ -19,6 +19,8 @@ class App extends Component {
     
 
     return (
+
+      // The router sets up the urls of the different pages in our application
       <Router>
         <div className="App">
 

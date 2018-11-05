@@ -9,13 +9,15 @@ class Feeling extends Component {
   }
 
 
-
+  // handles the input change and sets state
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
   }
 
+
+  // handles the NEXT button to send local state to the reduxState
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.dispatch( { type: 'ADD_FEELING', payload: this.state.feeling } );
@@ -23,9 +25,6 @@ class Feeling extends Component {
     // this.clearFeedbackFields();
   }
 
-//   clearFeedbackFields = () => {
-//     this.setState(this.state);
-//   }
 
 
   render() {

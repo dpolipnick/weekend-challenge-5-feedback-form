@@ -10,18 +10,21 @@ class Comments extends Component {
   }
 
 
-
+  // change state from the input
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
   }
 
+  // handles the NEXT button
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.dispatch( { type: 'ADD_COMMENTS', payload: this.state.comments } );
     console.log('In comments submit- this.props.reduxState.feedbackReducer is:', this.props.reduxState.feedbackReducer);
     
+
+    // POST request to send the reduxState to the database
     axios({
       method: 'POST',
       url: '/feedback',
@@ -37,11 +40,7 @@ class Comments extends Component {
   }
 
 
-//   clearFeedbackFields = () => {
-//     this.setState(this.state);
-//   }
-
-
+  // render the JSX
   render() {
 
     let newFeedback = this.state;

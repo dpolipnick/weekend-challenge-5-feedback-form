@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 class Success extends Component {
 
-
+  // on click, reset form and direct back to page 1 of form
   handleClick = () => {
     // event.preventDefault();
     this.props.history.push('/');
